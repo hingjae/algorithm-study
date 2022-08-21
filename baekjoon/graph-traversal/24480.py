@@ -14,7 +14,7 @@ for i in range(m):
     graph[v].append(u)
 
 for i in range(1, n+1):
-    graph[i].sort()
+    graph[i].sort(reverse=True)
 
 def dfs(r):
     global count
