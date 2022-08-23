@@ -1,5 +1,5 @@
 import sys
-sys.setrecursionlimit(10**9)
+sys.setrecursionlimit(10**9) # 재귀함수 깊이 제한
 input = sys.stdin.readline
 
 n, m, r = map(int, input().split())
