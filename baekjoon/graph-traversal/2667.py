@@ -11,7 +11,6 @@ dy = [1, -1, 0, 0]
 
 def bfs(graph, a, b):
     n = len(graph)
-    print(n)
     queue = deque()
     queue.append((a, b))
     graph[a][b] = 0
@@ -45,4 +44,3 @@ cnt.sort()
 print(len(cnt))
 for i in range(len(cnt)):
     print(cnt[i])
-
