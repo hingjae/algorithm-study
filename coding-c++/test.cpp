@@ -1,23 +1,27 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-vector<string> split(string input, string delimiter){
-	vector<string> ret;
-	long long pos = 0;
-	string token = "";
-	while((pos = input.find(delimiter)) != string::npos) {
-		token = input.substr(0, pos);
-		ret.push_back(token);
-		input.erase(0, pos+delimiter.length());	
-	}
-	ret.push_back(input);
-	return ret;
+int n = 5, k = 3, a[5] = {1, 2, 3, 4, 5};
+void print(vector<int> b){
+	for(int i : b)cout << i << " ";
+	cout << '\n';
 }
 
-int main(void) {
-	string tmp = "hello world!";
-	vector<string> result = split(tmp, "lo");
-	for(string a : result) cout << a << " ";
+void combi(int start, vector<int> b){
+	if(b.size() == k) {
+		print(b);
+		return ;
+	}
+	for(int i = start + 1; i < n; i++) {
+		b.push_back(i);
+		combi(i, b);
+		b.pop_back();
+	}
+	return ;
+}
+
+int main() {
+	vector<int> b;
+	combi(-1, b);
 	return 0;
 }
-
