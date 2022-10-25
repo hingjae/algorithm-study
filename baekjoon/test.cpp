@@ -1,12 +1,10 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int num;
-string ret;
+string s;
 int main(){
-	num = 0;
-	for(int i = 0; i < 2; i++){
-		ret += (char)(i + 'a');	
-	}
-	cout << ret;
+	cin >> s;
+	int i = s.find('*');
+	cout << s.substr(0, i) << '\n';
+	cout << s.substr(i+1, s.size());	
 }
