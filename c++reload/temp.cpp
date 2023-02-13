@@ -1,32 +1,26 @@
 #include<bits/stdc++.h>
 using namespace std;
-int arr[9], sum;
-vector<int> v;
-pair<int, int> ret;
-void solve() {
-	for(int i = 0 ; i < 9; i++) {
-		for (int j = 0; j < i; j++) {
-			if(sum - arr[i] - arr[j] == 100) {
-				ret = {i, j};
-				return;
-			}
-		}
-	}
-}
+int n;
+string p;
 int main() {
-	for(int i = 0; i < 9; i++) {
-		cin >> arr[i]; sum += arr[i];
-	}
-	solve();
-	for(int i = 0; i < 9; i++){
-		if(ret.first == i || ret.second == i) {
-			continue;
+	cin >> n;
+	cin >> p;
+	// find, reverse, sub_str
+	int pos = p.find("*");
+	string div1 = p.substr(0, pos);
+	string div2 = p.substr(pos + 1);
+	for(int i = 0; i < n; i++) {
+		string s;
+		cin >> s;
+		if(s.size() < div1.size()+div2.size()) {
+			cout << "NE" << "\n";
+		} else {
+			if(div1 == s.substr(0, pos) && div2 == s.substr(s.size() - div2.size())) {
+				cout << "DA" << "\n";
+		} else {
+			cout << "NE" << "\n";
 		}
-		v.push_back(arr[i]);
-	}
-	sort(v.begin(), v.end());
-	for(int a : v) {
-		cout << a << "\n";
+		}
 	}
 	return 0;
 }
