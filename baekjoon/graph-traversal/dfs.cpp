@@ -1,12 +1,11 @@
 #include<bits/stdc++.h>
 using namespace std;
-
 int dy[4] = {-1, 0, 1, 0};
 int dx[4] = {0, 1, 0, -1};
+int m, n, k, y, x, ret, ny, nx, t;
 int a[104][104];
 bool visited[104][104];
-int n, m, ny, nx, ret;
-void dfs(int y, int x){
+void dfs(int y, int x) {
 	visited[y][x] = 1;
 	for(int i = 0; i < 4; i++) {
 		ny = y + dy[i];
@@ -16,18 +15,15 @@ void dfs(int y, int x){
 			dfs(ny, nx);
 		}
 	}
-	return;
 }
 
 int main() {
 	cin >> n >> m;
-	
-	for(int i = 0; i < n; i++) {
+	for(int i = 0; i < n; i++){
 		for(int j = 0; j < m; j++) {
 			cin >> a[i][j];
 		}
 	}
-	
 	for(int i = 0; i < n; i++) {
 		for(int j = 0; j < m; j++) {
 			if(a[i][j] == 1 && !visited[i][j]) {
@@ -35,8 +31,5 @@ int main() {
 			}
 		}
 	}
-	
-	cout << ret << '\n';
-	
-	return 0;
+	cout << ret <<"\n";
 }
