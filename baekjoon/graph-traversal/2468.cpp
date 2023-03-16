@@ -2,7 +2,7 @@
 using namespace std;
 int dy[4] = {-1, 0, 1, 0};
 int dx[4] = {0, 1, 0, -1};
-int n, a[101][101], visited[101][101], maxCnt, cnt, ret = 1;
+int n, a[101][101], visited[101][101], cnt, ret = 1;
 
 void dfs(int y, int x, int h) {
 	visited[y][x] = 1;	
@@ -20,11 +20,9 @@ void dfs(int y, int x, int h) {
 int main() {
 	
 	cin >> n;
-	int maxH = 0;
 	for(int i = 0; i < n; i++) {
 		for(int j = 0; j < n; j++) {
 			cin >> a[i][j];
-			if(maxH < a[i][j]) maxH = a[i][j];
 		}
 	}
 	
