@@ -1,23 +1,19 @@
 #include<bits/stdc++.h>
 using namespace std;
-int n, m, j, cnt;
+int n, a[1000001], ret[1000001];
+stack<int>  stk;
 int main() {
-	cin >> n >> m >> j;
-	int l, r;
-	l = 1;
-	for(int i = 0; i < j; i++) {
-		int tmp;
-		cin >> tmp;
-		r = l + m - 1;
-		if(tmp >= l && tmp <= r) continue;
-		if(tmp < l) {
-			cnt += l - tmp;
-			l = tmp;
-		} else {
-			cnt += tmp - r;
-			l = l + tmp - r;
+	cin >> n;
+	memset(ret, -1, sizeof(ret));
+	for(int i = 0; i < n; i++) {
+		cin >> a[i];
+		while(stk.size() && a[stk.top()] < a[i]){
+			ret[stk.top()] = a[i]; stk.pop();
 		}
+		stk.push(i);
 	}
-	cout << cnt << "\n";
+	for(int i = 0; i < n; i++) {
+		cout << ret[i] << " ";
+	}
 	return 0;
 }
