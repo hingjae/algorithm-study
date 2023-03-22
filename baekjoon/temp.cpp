@@ -1,19 +1,23 @@
 #include<bits/stdc++.h>
 using namespace std;
-int t, n, ret2, ret5;
+int n, m, j, cnt;
 int main() {
-	cin >> t;
-	while(t--) {
-		cin >> n;
-		ret2 = 0; ret5 = 0;
-		for(int i = 2; i <= n; i *= 2) {
-			ret2 += n / i;
+	cin >> n >> m >> j;
+	int l, r;
+	l = 1;
+	for(int i = 0; i < j; i++) {
+		int tmp;
+		cin >> tmp;
+		r = l + m - 1;
+		if(tmp >= l && tmp <= r) continue;
+		if(tmp < l) {
+			cnt += l - tmp;
+			l = tmp;
+		} else {
+			cnt += tmp - r;
+			l = l + tmp - r;
 		}
-		for(int i = 5; i <= n; i *= 5) {
-			ret5 += n / i;
-		}
-		
-		cout << min(ret2, ret5) << "\n";
 	}
+	cout << cnt << "\n";
 	return 0;
 }
