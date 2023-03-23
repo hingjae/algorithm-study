@@ -1,19 +1,46 @@
 #include<bits/stdc++.h>
 using namespace std;
-int n, a[1000001], ret[1000001];
-stack<int>  stk;
+string s;
+bool is_aeiou(char c) {
+	return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
+}
 int main() {
-	cin >> n;
-	memset(ret, -1, sizeof(ret));
-	for(int i = 0; i < n; i++) {
-		cin >> a[i];
-		while(stk.size() && a[stk.top()] < a[i]){
-			ret[stk.top()] = a[i]; stk.pop();
+	while(true) {
+		cin >> s;
+		if(s == "end")break;
+		bool aeiou = false;
+		bool success = true;
+		int cnt1 = 0, cnt2 = 0;
+		char _prev = -1;
+		for(int i = 0; i < s.size(); i++) {
+
+			if(!aeiou) aeiou = is_aeiou(s[i]);
+
+			if(is_aeiou(s[i])) {
+				cnt2 = 0;
+				cnt1++;
+				if(cnt1 >= 3) {
+					success = false;
+				}
+			} else {
+				cnt1 = 0;
+				cnt2++;
+				if(cnt2 >= 3) {
+					success = false;
+				}
+			}
+
+			if(s[i] == _prev && (s[i] != 'e' && s[i] != 'o')){
+				success = false;
+			}
+			_prev = s[i];
 		}
-		stk.push(i);
-	}
-	for(int i = 0; i < n; i++) {
-		cout << ret[i] << " ";
+		if(!aeiou) success = false;
+		if(success) {
+			cout << "<" << s << "> is acceptable.\n";
+		} else {
+			cout << "<" << s << "> is not acceptable.\n";
+		}
 	}
 	return 0;
 }
