@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
-int n, m, a[54][54], result = 987654321;
-vector<vector<int>> chickenCombi; // index조합.
+int n, m, a[54][54], ret, mn, result = 987654321;
+vector<vector<int>> chickenCombi;
 vector<pair<int, int>> home, chicken;
 void combi(int start, vector<int> v) {
     if(v.size() == m) {
@@ -20,25 +20,23 @@ int main() {
     for(int i = 0; i < n; i++) {
         for(int j = 0; j < n; j++) {
             cin >> a[i][j];
-            if(a[i][j] == 1) home.push_back({i, j});
-            if(a[i][j] == 2) chicken.push_back({i, j});
+            if(a[i][j] == 1)home.push_back({i, j});
+            if(a[i][j] == 2)chicken.push_back({i, j});
         }
     }
-
     vector<int> v;
     combi(-1, v);
-
-    for(vector<int> cList : chickenCombi){
-        int ret = 0;
-        for(pair<int, int> tmp_home : home){
-            int _min = 987654321;
-            for(int ch : cList){
-                int _dist = abs(tmp_home.first - chicken[ch].first) + abs(tmp_home.second - chicken[ch].second);
-                _min = min(_min, _dist);
+    for(vector<int> v : chickenCombi) {
+        ret = 0;
+        for(pair<int, int> tmp_home: home) {
+            mn = 987654321;
+            for(int i : v) {
+                int _dist = abs(tmp_home.first - chicken[i].first) + abs(tmp_home.second - chicken[i].second);
+                mn = min(_dist, mn);
             }
-            ret += _min;
+            ret += mn;
         }
-        result = min(result, ret);
+        result = min(ret, result);
     }
     cout << result << "\n";
     return 0;
