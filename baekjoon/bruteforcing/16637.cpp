@@ -10,13 +10,21 @@ int oper(char a, int b, int c) {
     if(a == '-') return b - c;
     if(a == '*') return b * c;
 }
+
+
 void go(int here, int _num) {
+
     if(here == num.size() - 1) {
         ret = max(ret, _num);
         return;
     }
+
+    //두가지 경우의 수만 있다
+    
+    //앞에꺼 먼저 괄호
     go(here + 1, oper(oper_str[here], _num, num[here + 1]));
 
+    //뒤에꺼 먼저 괄호
     if(here + 2 <= num.size() - 1) {
         int temp = oper(oper_str[here + 1], num[here + 1], num[here + 2]);
         go(here + 2, oper(oper_str[here], _num, temp));
