@@ -1,2 +1,2 @@
-g++ -std=c++14 -Wall temp.cpp -o a.out
+g++ -std=c++14 -Wall 9934.cpp -o a.out
 ./test.out
