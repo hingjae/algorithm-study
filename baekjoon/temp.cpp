@@ -1,17 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
-int n;
-vector<int> v;
+string s;
 int main() {
-	cin >> n;
-	for(int i = 0; i < n; i++) {
-		int tmp;
-		cin >> tmp;
-		v.push_back(tmp);
-	}
-	sort(v.begin(), v.end());
-	for(auto item : v) { 
-		cout << item << "\n";
-	}
+	cout << 81 % 10 << "\n";
 	return 0;
 }
